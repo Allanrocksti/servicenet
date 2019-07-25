@@ -27,6 +27,7 @@
             [customErrorMessages]="customErrorMessages">
           <label for="inputName">Nome</label>
           <input class="form-control"
+                maxlength="80"
                 id="inputName"
                 formControlName="name"
                 placeholder="Digite seu nome..."
@@ -70,6 +71,7 @@
               [customErrorMessages]="customErrorMessages">
             <label for="inputStreet">Rua</label>
             <input class="form-control"
+                  maxlength="80"
                   id="inputStreet"
                   formControlName="street"
                   placeholder="Digite sua rua...">
@@ -93,6 +95,7 @@
               [customErrorMessages]="customErrorMessages">
             <label for="inputCountry">País</label>
             <input class="form-control"
+                  maxlength="80"
                   formControlName="country"
                   id="inputCountry"
                   placeholder="Digite seu país...">
@@ -103,6 +106,7 @@
               [customErrorMessages]="customErrorMessages">
             <label for="inputState">Estado</label>
             <input class="form-control"
+                  maxlength="80"
                   formControlName="country_state"
                   id="inputState"
                   placeholder="UF">
@@ -113,6 +117,7 @@
               [customErrorMessages]="customErrorMessages">
             <label for="inputCity">Cidade</label>
             <input class="form-control"
+                  maxlength="80"
                   formControlName="city"
                   id="inputCity"
                   placeholder="Digite sua cidade..."
