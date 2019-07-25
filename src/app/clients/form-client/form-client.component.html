@@ -1,0 +1,151 @@
+<div class="container">
+  <ng-template #customLoadingTemplate></ng-template>
+
+  <ngx-loading [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"></ngx-loading>
+
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <h1 *ngIf="!isEditClient">Cadastrar cliente</h1>
+      <h1 *ngIf="isEditClient">Editar cliente</h1>
+    </div>
+  </div>
+  <form class="form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="col">
+        <h3>Dados Pessoais</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-9">
+        <div class="form-group"
+            [customErrorMessages]="customErrorMessages">
+          <label for="inputName">Nome</label>
+          <input class="form-control"
+                id="inputName"
+                formControlName="name"
+                placeholder="Digite seu nome..."
+                type="text"
+                mask="S{80}">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group"
+            [customErrorMessages]="customErrorMessages">
+          <label for="inputPhone">Telefone</label>
+          <input class="form-control"
+                id="inputPhone"
+                formControlName="phone"
+                placeholder="Digite seu telefone..."
+                mask="(00) 00000-0000">
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="row">
+        <div class="col">
+          <h3>Endereço</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group"
+              [customErrorMessages]="customErrorMessages">
+            <label for="inputPostalCode">CEP</label>
+            <input class="form-control"
+                  id="inputPostalCode"
+                  formControlName="postalcode"
+                  placeholder="Digite seu CEP..."
+                  mask="00000-000"
+                  (keyup)="getInfoPostalcode()">
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="form-group"
+              [customErrorMessages]="customErrorMessages">
+            <label for="inputStreet">Rua</label>
+            <input class="form-control"
+                  id="inputStreet"
+                  formControlName="street"
+                  placeholder="Digite sua rua..."
+                  mask="S{80}">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group"
+              [customErrorMessages]="customErrorMessages">
+            <label for="inputNumber">Número</label>
+            <input class="form-control"
+                  id="inputNumber"
+                  formControlName="num"
+                  placeholder="Nº"
+                  mask="00000">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group"
+              [customErrorMessages]="customErrorMessages">
+            <label for="inputCountry">País</label>
+            <input class="form-control"
+                  formControlName="country"
+                  id="inputCountry"
+                  placeholder="Digite seu país..."
+                  mask="S{85}">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group"
+              [customErrorMessages]="customErrorMessages">
+            <label for="inputState">Estado</label>
+            <input class="form-control"
+                  formControlName="country_state"
+                  id="inputState"
+                  placeholder="UF"
+                  mask="S{80}">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group"
+              [customErrorMessages]="customErrorMessages">
+            <label for="inputCity">Cidade</label>
+            <input class="form-control"
+                  formControlName="city"
+                  id="inputCity"
+                  placeholder="Digite sua cidade..."
+                  mask="S{58}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h3>Mapa</h3>
+        <agm-map *ngIf="lat" [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+        <div *ngIf="!lat" class="alert alert-primary" role="alert">
+          Digite o CEP corretamente para a visualização no mapa!
+        </div>
+        <div *ngIf="notLatLgn" class="alert alert-danger" role="alert">
+          Impossivel encontrar coordenadas!
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <button type="submit" class="btn btn-primary" *ngIf="!isEditClient">Cadastrar</button>
+        <button type="submit" class="btn btn-primary" *ngIf="isEditClient">Aplicar alterações</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,6 @@
+@import 'src/assets/scss/_variables.scss';
+
+label, input {
+  color: $color-primary;
+  border-color: $color-primary
+}

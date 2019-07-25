@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" [routerLink]="['/admin/clientes']" routerLinkActive="router-link-active">
+    <img src="assets/img/logo-n-set.png" width="40" height="30"> {{ displayName }}
+  </a>
+  <button (click)="isShown = !isShown" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{ 'show': isShown }" >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/admin/clientes']" routerLinkActive="router-link-active">Início <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <button (click)="logoff()" class="btn btn-danger my-2 my-sm-0" type="submit">Sair</button>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

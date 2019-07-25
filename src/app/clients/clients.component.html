@@ -1,0 +1,66 @@
+<div class="container-fluid">
+
+  <ng-template #customLoadingTemplate></ng-template>
+
+  <ngx-loading [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"></ngx-loading>
+
+  <div class="row justify-content-md-center">
+    <div class="col-sm-auto">
+      <div class="card-body text-center">
+        <h1 class="card-title">Clientes</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width: 10%" *ngIf="!isMobile()" scope="col">{{ dataTable.headerRow[0] }}</th>
+            <th style="width: 50%" scope="col">{{ dataTable.headerRow[1] }}</th>
+            <th style="width: 40%" *ngIf="!isMobile()" scope="col">{{ dataTable.headerRow[2] }}</th>
+            <th style="width: 50%" *ngIf="!isMobile()" scope="col">{{ dataTable.headerRow[3] }}</th>
+            <th style="width: 40%" class="text-right"scope="col">
+              <button *ngIf="!isMobile()" class="btn btn-primary btn-add-client"
+                [routerLink]="[ '/admin/clientes/adicionar']">Adicionar cliente</button>
+              <a *ngIf="isMobile()" class="btn btn-link btn-primary btn-add-client"
+                [routerLink]="[ '/admin/clientes/adicionar']"><i class="material-icons">add</i></a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataTable.dataRows">
+            <td style="width: 10%" *ngIf="!isMobile()" (click)="navigateToClientDetails(row.id_client)">{{ row.id_client }}</td>
+            <td style="width: 50%" (click)="navigateToClientDetails(row.id_client)">{{ row.name }}</td>
+            <td style="width: 40%" *ngIf="!isMobile()">{{ row.phone | mask: '(00) 00000-0000' }}</td>
+            <td style="width: 50%" *ngIf="!isMobile()">{{ row.street }}</td>
+            <td style="width: 40%" class="text-right">
+              <a class="btn btn-link btn-success"
+                *ngIf="!isMobile()"
+                title="Mais detalhes"
+                (click)="navigateToClientDetails(row.id_client)"><i class="material-icons">person</i></a>
+              <a class="btn btn-link btn-primary"
+                title="Editar"
+                (click)="navigateToEditClient(row.id_client)"><i class="material-icons">edit</i></a>
+              <a class="btn btn-link btn-danger"
+                title="Excluir"
+                (click)="showModalDelete(modalDeleteClient)"><i class="material-icons">close</i></a>
+              <ng-template #modalDeleteClient>
+                <div class="modal-body text-center">
+                  <p>Tem certeza que você deseja excluir este cliente?</p>
+                  <button type="button" class="btn btn-danger" style="margin-right: 10px" (click)="deleteClient(row.id_client)">Sim</button>
+                  <button type="button" class="btn btn-outline-primary" (click)="modalRef.hide()">Não</button>
+                </div>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="clients.length === 0" class="alert alert-primary" role="alert">
+        Vamos lá, crie o seu primeiro cliente :)
+      </div>
+    </div>
+  </div>
+</div>

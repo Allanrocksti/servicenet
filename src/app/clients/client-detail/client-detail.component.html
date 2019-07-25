@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <div class="card text-white bg-primary" style="width: 100%;">
+        <div class="row">
+          <div class="col">
+            <div class="card-body">
+              <img class="mx-auto d-block" src="assets/img/profile.jpg">
+            </div>
+          </div>
+          <div class="col">
+            <div class="card-body">
+              <h2>{{ client?.name }}</h2>
+              <h5>Telefone: {{ client?.phone | mask: '(00) 00000-0000' }}</h5>
+              <h5>CEP: {{ client?.postalcode | mask: '00000-000' }}</h5>
+              <h5>Rua: {{ client?.street }}</h5>
+              <h5>Cidade: {{ client?.city }}</h5>
+              <h5>Estado: {{ client?.country_state }}</h5>
+              <h5>País: {{ client?.country }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
