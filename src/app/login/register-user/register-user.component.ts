@@ -22,8 +22,6 @@ export class RegisterUserComponent implements OnInit {
   modalRef: BsModalRef;
   loading = false;
 
-  regexStrongPassword: RegExp = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/;
-
   customErrorMessages: any[] = [
     {
       error: 'minlength',
@@ -60,7 +58,7 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]*$/)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, LevelPassword.StrongPassword]],
       confirmPassword: ['', [Validators.required, ValidatePassword.MatchPassword]]

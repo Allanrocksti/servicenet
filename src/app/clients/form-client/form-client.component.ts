@@ -23,6 +23,7 @@ export class FormClientComponent implements OnInit {
   notLatLgn: boolean;
   loading = false;
   modalRef: BsModalRef;
+  regexTextFields = /^[a-zA-Z\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ]*$/;
 
   customErrorMessages: any[] = [
     {
@@ -51,14 +52,14 @@ export class FormClientComponent implements OnInit {
   ngOnInit() {
 
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(this.regexTextFields)]],
       phone: ['', [Validators.required, Validators.minLength(11)]],
       postalcode: ['', [Validators.required, Validators.minLength(8)]],
-      street: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      street: ['', [Validators.required, Validators.minLength(2), Validators.pattern(this.regexTextFields)]],
       num: ['', Validators.required],
-      country: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
-      country_state: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
-      city: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]]
+      country: ['', [Validators.required, Validators.minLength(2), Validators.pattern(this.regexTextFields)]],
+      country_state: ['', [Validators.required, Validators.minLength(2), Validators.pattern(this.regexTextFields)]],
+      city: ['', [Validators.required, Validators.minLength(2), Validators.pattern(this.regexTextFields)]]
     });
 
     this.setEditClient();
