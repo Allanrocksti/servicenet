@@ -22,6 +22,7 @@ $ npm install -g @angular/cli
 ```
 $ cd <meu-workspace>
 $ git clone https://github.com/Allanrocksti/servicenet.git
+$ cd servicenet
 $ npm i
 $ ng serve --host 0.0.0.0 --open
 ```
