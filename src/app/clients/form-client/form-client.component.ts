@@ -32,6 +32,10 @@ export class FormClientComponent implements OnInit {
     {
       error: 'required',
       format: (label, error) => 'Não esqueça desse campo ;)'
+    },
+    {
+      error: 'pattern',
+      format: (label, error) => 'Tem certeza que este campo está correto? Tente novamente!'
     }
   ];
 
@@ -47,14 +51,14 @@ export class FormClientComponent implements OnInit {
   ngOnInit() {
 
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
       phone: ['', [Validators.required, Validators.minLength(11)]],
       postalcode: ['', [Validators.required, Validators.minLength(8)]],
-      street: ['', [Validators.required, Validators.minLength(2)]],
+      street: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
       num: ['', Validators.required],
-      country: ['', Validators.required],
-      country_state: ['', Validators.required],
-      city: ['', Validators.required]
+      country: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      country_state: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      city: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]]
     });
 
     this.setEditClient();

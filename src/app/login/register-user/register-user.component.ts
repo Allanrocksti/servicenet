@@ -7,6 +7,7 @@ import { User } from 'src/app/shared/class/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { ValidatePassword } from 'src/app/shared/validators/validate-password';
 import { ModalContentComponent } from 'src/app/shared/modal-content/modal-content.component';
+import { LevelPassword } from 'src/app/shared/validators/level-password.validator';
 
 
 @Component({
@@ -29,12 +30,16 @@ export class RegisterUserComponent implements OnInit {
       format: (label, error) => 'Tem certeza que esse é seu nome?'
     },
     {
+      error: 'strongPassword',
+      format: (label, error) => 'Digite uma senha com no mínimo 6 caracteres, incluindo letras e números !'
+    },
+    {
       error: 'email',
       format: (label, error) => 'Email inválido, tente novamente !'
     },
     {
       error: 'pattern',
-      format: (label, error) => 'Digite uma senha com no mínimo 6 caracteres, incluindo letras e números !'
+      format: (label, error) => 'Tem certeza que este campo está correto? Tente novamente!'
     },
     {
       error: 'required',
@@ -55,9 +60,9 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(this.regexStrongPassword)]],
+      password: ['', [Validators.required, LevelPassword.StrongPassword]],
       confirmPassword: ['', [Validators.required, ValidatePassword.MatchPassword]]
     });
 
