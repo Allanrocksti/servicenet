@@ -1,27 +1,28 @@
-# Servicenet
+# Servicenet - Front-end
+
+##### Protótipo simplificado de um sistema web solicitado como desafio pela Servicenet.
+
+##### Esse projeto está configurado em modo de produção na plataforma Heroku, acessível pelo link: http://servicenet-frontend.herokuapp.com/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
-## Development server
+# Instruções para rodar em servidor de desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Pré-requisitos
+- ##### nodejs 10.9.0> (disponível para dowload em: [NODEJS](nodejs.org))
+- ##### npm (Normalmente vem junto com o nodejs)
 
-## Code scaffolding
+## Instalação do Framework Angular 8
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+$ npm install -g @angular/cli
+```
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Configuração do projeto
+```
+$ cd <meu-workspace>
+$ git clone https://github.com/Allanrocksti/servicenet.git
+$ npm i
+$ ng serve --host 0.0.0.0 --open
+```
+##### O app ficará acessível em [localhost:4200](localhost:4200) e no ip do dispositivo, na porta 4200 para dispositivos conectados na mesma rede em qual o computador está conectado
